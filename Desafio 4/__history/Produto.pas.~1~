@@ -1,0 +1,10 @@
+unit Produto;
+
+interface
+
+Type
+  TCliente = class;
+
+implementation
+
+end.

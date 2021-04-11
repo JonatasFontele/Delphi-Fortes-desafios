@@ -1,0 +1,41 @@
+unit Produto;
+
+interface
+
+type
+  TProduto = class
+  private
+    Codigo: String;
+    Nome: String;
+    Valor: Currency;
+    procedure SetCodigo(const Value: String);
+    procedure SetNome(const Value: String);
+    procedure SetValor(const Value: Currency);
+
+  public
+    property Codigo: String read Codigo write SetCodigo;
+    property Nome: String read Nome write SetNome;
+    property Valor: String read Valor write SetValor;
+
+  end;
+
+implementation
+
+{ TProduto }
+
+procedure TProduto.SetCodigo(const Value: String);
+begin
+  Codigo := Value;
+end;
+
+procedure TProduto.SetNome(const Value: String);
+begin
+  Nome := Value;
+end;
+
+procedure TProduto.SetValor(const Value: Currency);
+begin
+  Valor := Value;
+end;
+
+end.

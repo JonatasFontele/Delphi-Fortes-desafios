@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/02/09 17:02:56.000.786,=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/02/09 17:08:42.000.240,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio4\uFormPrincipal.pas=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/02/09 17:08:42.000.240,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio4\uFormPrincipal.dfm=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2021/02/09 17:09:00.000.391,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio4\PedidosCalc.dproj=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2021/02/09 19:42:47.000.737,=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio4\Unit1.pas</Transaction>
+    <Transaction>2021/02/09 19:43:23.000.753,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio4\Unit1.pas=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio4\Produto.pas</Transaction>
+    <Transaction>2021/02/10 13:23:15.000.361,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio4\Produto.pas=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio4\uProduto.pas</Transaction>
+  </Transactions>
+</BorlandProject>
