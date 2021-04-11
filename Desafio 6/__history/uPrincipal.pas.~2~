@@ -1,0 +1,32 @@
+unit uPrincipal;
+
+{
+  O proprietário da empresa ABC precisa de um programa de computador para calcular
+  o novo salário que seus funcionários. Sabendo que o aumento de salário para todos
+  os funcionários será de 5%, faça um programa que recebe o código do funcionário,
+  o valor do salário atual, imprima o código e o salário atualizado e ao final
+  o valor que o aumento representou na folha de pagamento da empresa.
+}
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+
+type
+  TForm1 = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,95 @@
+unit uFrmPrincipal;
+
+{
+  O proprietário da empresa ABC precisa de um programa de computador para calcular
+  o novo salário que seus funcionários. Sabendo que o aumento de salário para todos
+  os funcionários será de 5%, faça um programa que recebe o código do funcionário,
+  o valor do salário atual, imprima o código e o salário atualizado e ao final
+  o valor que o aumento representou na folha de pagamento da empresa.
+}
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
+  StrUtils, Contnrs, Generics.Defaults, Generics.Collections, uFuncionario,
+  Vcl.ComCtrls;
+
+type
+  TFrmPrincipal = class(TForm)
+    sc: TMemo;
+    EdtCodigo: TEdit;
+    LblCodigo: TLabel;
+    EdtSalario: TEdit;
+    LblSalario: TLabel;
+    BtnAdd: TButton;
+    BtnFinalizar: TButton;
+    DateTimePicker1: TDateTimePicker;
+    LblData: TLabel;
+    procedure BtnAddClick(Sender: TObject);
+    procedure BtnFinalizarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+  private
+    { Private declarations }
+    vDict: TObjectDictionary<Integer, TFuncionario>;
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmPrincipal: TFrmPrincipal;
+  Funcionario: TFuncionario;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmPrincipal.BtnAddClick(Sender: TObject);
+begin
+  try
+    vDict.Add(StrToInt(EdtCodigo.Text),
+      TFuncionario.Create(StrToInt(EdtCodigo.Text),
+      StrToCurr(EdtSalario.Text)));
+  for Funcionario in vDict.Values do
+  begin
+    Memo.Lines.Add('Código: ' + IntToStr(Funcionario.Codigo) + ', ' +
+      'Novo Salário: ' + CurrToStrF(Funcionario.AumentoSalario, ffCurrency, 2));
+  end;
+  finally
+    //vDict.Free;
+  end;
+
+end;
+
+procedure TFrmPrincipal.BtnFinalizarClick(Sender: TObject);
+var
+  AumentoTotal, SalarioTotal: Currency;
+begin
+  SalarioTotal := 0;
+  AumentoTotal := 0;
+  for Funcionario in vDict.Values do
+  begin
+    Memo.Lines.Add('Código: ' + IntToStr(Funcionario.Codigo) + ', ' +
+      'Novo Salário: ' + CurrToStrF(Funcionario.AumentoSalario, ffCurrency, 2));
+    SalarioTotal := SalarioTotal + Funcionario.Salario;
+    AumentoTotal := AumentoTotal + Funcionario.AumentoSalario;
+  end;
+
+   Memo.Lines.Add('Aumento na folha de pagamento: ' +
+      CurrToStrF((AumentoTotal - SalarioTotal), ffCurrency, 2));
+end;
+
+procedure TFrmPrincipal.FormCreate(Sender: TObject);
+begin
+  vDict := TObjectDictionary<Integer, TFuncionario>.Create([doOwnsValues]);
+end;
+
+procedure TFrmPrincipal.FormDestroy(Sender: TObject);
+begin
+  vDict.Free;
+end;
+
+end.

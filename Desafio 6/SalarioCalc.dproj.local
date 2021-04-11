@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/02/16 17:02:50.000.215,=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/02/16 17:03:26.000.453,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio6\uPrincipal.dfm</Transaction>
+    <Transaction>2021/02/16 17:03:26.000.453,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio6\uPrincipal.pas</Transaction>
+    <Transaction>2021/02/16 17:07:40.000.102,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio6\SalarioCalc.dproj</Transaction>
+    <Transaction>2021/02/16 17:23:18.000.181,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio6\uPrincipal.dfm=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio6\uFrmPrincipal.dfm</Transaction>
+    <Transaction>2021/02/16 17:23:18.000.181,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio6\uPrincipal.pas=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio6\uFrmPrincipal.pas</Transaction>
+    <Transaction>2021/02/16 17:24:04.000.424,=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio6\Unit1.pas</Transaction>
+    <Transaction>2021/02/16 17:24:15.000.386,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio6\Unit1.pas=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio6\uFuncionario.pas</Transaction>
+  </Transactions>
+</BorlandProject>
