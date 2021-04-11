@@ -1,0 +1,53 @@
+unit uAluno;
+
+interface
+
+type
+  TAluno = class
+  private
+    FMatricula: Integer;
+    FNome: String;
+    FLNotas: array[0..4] of Double;
+
+    function CalculaMedia(Nota1, Nota2, Nota3, ME: Double): Double;
+
+    procedure SetMatricula(const Value: Integer);
+    procedure SetNome(const Value: String);
+    procedure SetNotas(const Value: Double);
+
+  public
+    property Matricula: Integer read FMatricula write SetMatricula;
+    property Nome: String read FNome write SetNome;
+    property LNotas: array[0..4] of Double read FLNotas write SetNotas;
+
+  end;
+
+implementation
+
+{ TAluno }
+
+procedure TAluno.SetMatricula(const Value: Integer);
+begin
+  FMatricula := Value;
+end;
+
+procedure TAluno.SetNome(const Value: String);
+begin
+  FNome := Value;
+end;
+
+procedure TAluno.SetNotas(const Value: Double);
+var
+  I: Integer;
+begin
+  FLNotas[I] := Value;
+end;
+
+function TAluno.CalculaMedia(Nota1, Nota2, Nota3, ME: Double): Double;
+var
+  I: Integer;
+begin
+  Result := (FLNotas[0] + (FLNotas[1] * 2) + (FLNotas[2] * 3) + FLNotas[3]) / 7;
+end;
+
+end.

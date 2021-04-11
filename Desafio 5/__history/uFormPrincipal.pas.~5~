@@ -1,0 +1,111 @@
+unit uFormPrincipal;
+
+{
+  Criar uma aplicação que receba o código do aluno, 3 notas e a média dos exercícios (ME).
+  Calcular a média de aproveitamento (MA) usando a fórmula: MA = (N1 + N2 x 2 + N3 x 3 + ME) / 7
+  Listar os alunos imprimindo código e conceito de acordo com a tabela:
+  Média de Aproveitamento | Conceito
+  9,0                 A
+  7,5 e < 9,0         B
+  6,0 e < 7,5         C
+  4,0 e < 6,0         D
+  < 4,0               E
+}
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.ExtCtrls, StrUtils, Contnrs, Generics.Defaults, Generics.Collections, uAluno;
+
+type
+  TFrmPrincipal = class(TForm)
+    PHeader: TPanel;
+    BtnCadastrarAluno: TBitBtn;
+    Btn: TBitBtn;
+    PBody: TPanel;
+    StringGridAlunos: TStringGrid;
+    LblMatricula: TLabel;
+    LblNota1: TLabel;
+    LblNota2: TLabel;
+    LblNota3: TLabel;
+    LblME: TLabel;
+    EdtMatricula: TEdit;
+    EdtNota1: TEdit;
+    EdtNota2: TEdit;
+    EdtNota3: TEdit;
+    EdtME: TEdit;
+    BtnCalcular: TButton;
+    procedure BtnCalcularClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmPrincipal: TFrmPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmPrincipal.BtnCalcularClick(Sender: TObject);
+var
+  Aluno: TAluno;
+  vDict: TDictionary<Integer,TAluno.Nome>;
+  vKey: Integer;
+  I: Integer;
+begin
+  try
+    vDict.Add(1, 'Joana');
+    vDict.AddOrSetValue(2, 'Tadeu');
+    vDict.AddOrSetValue(3, 'Chico');
+
+    for vKey in vDict.Keys do
+      Memo.Lines.Add(vDict.Items[vKey]);
+
+    Memo.Lines.Add('');
+    if (vDict.Count > 0) and vDict.ContainsKey(2) then
+      Memo.Lines.Add('Encontrado Key: 2 Value: '+ vDict.Items[2]);
+
+    Memo.Lines.Add('');
+    vPair := vDict.ExtractPair(3);
+    Memo.Lines.Add('ExtractPair '+ IntToStr(vPair.Key) +':'+ vPair.Value);
+    Memo.Lines.Add(IntToStr(vDict.Count));
+
+    //ContainsValue(Value);
+    //TryGetValue(Key, out Value): Boolean;
+    //Remove(Key);
+  finally
+    vDict.Free;
+  end;
+
+  //Prepara cabeçalho
+  StringGridAlunos.ColCount := 3;
+  StringGridAlunos.RowCount := 3;
+  StringGridAlunos.ColWidths[0] := 60;
+  StringGridAlunos.Cells[0,0] := 'Nome';
+  StringGridAlunos.ColWidths[1] := 100;
+  StringGridAlunos.Cells[1,0] := 'Média de Aproveitamento';
+  StringGridAlunos.ColWidths[2] := 100;
+  StringGridAlunos.Cells[2,0] := 'Conceito';
+  //Atribui informações
+  for I := 1 to 3 do
+  begin
+    // Incrementa parcela de juros composto para tabela
+    ParcelaComposta := ParcelaComposta + (ParcelaComposta * TaxaJuros);
+    // Incrementa parcela de juros simples para tabela
+    ParcelaSimples := ParcelaSimples + (CapitalInicial * TaxaJuros);
+
+    StringGridAlunos.Cells[0,I] := IntToStr(I);
+    StringGridAlunos.Cells[1,I] := CurrToStrF(ParcelaComposta, ffCurrency, 2);
+    StringGridAlunos.Cells[2,I] := CurrToStrF(ParcelaSimples, ffCurrency, 2);
+    //.Position := ProgressBar1.Position +1;
+    Application.ProcessMessages;
+    //Sleep(100);
+  end;
+end;
+
+end.
