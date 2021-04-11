@@ -1,0 +1,130 @@
+unit uPrincipal;
+
+{
+  Desenvolver uma aplicação para calcular juros compostos.
+  Exemplo:
+  Um capital de R$1400 foi aplicado a juros compostos em um fundo de investimento
+  que rende 7% a.a. Qual será o juros acumulado após 24 meses?
+  Note que o tempo e a taxa estão em unidades diferentes, mas sabemos que 24 meses
+  é igual a 2 anos, logo, t = 2 anos, e que a taxa precisa ser escrita na forma
+  decimal, i = 0,07.
+
+  M = C (1 + i)^t
+  M = 1400 (1 + 0,07)²
+  M = 1400 (1,07)²
+  M = 1400 * 1,1449
+  M = 1602,86
+
+  #Adicionei um comparador.
+}
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Math, Vcl.Samples.Spin,
+  Vcl.ComCtrls, Vcl.Grids;
+
+type
+  TFrmPrincipal = class(TForm)
+    LblValorCapital: TLabel;
+    LblTaxaJuros: TLabel;
+    EdtValorCapital: TEdit;
+    EdtTaxaJuros: TEdit;
+    MemResultado: TMemo;
+    LblTempo: TLabel;
+    BtnCalcular: TButton;
+    SpnEdtTempo: TSpinEdit;
+    PgCntrlMemo: TPageControl;
+    TabSheetMontante: TTabSheet;
+    TabSheetParcelas: TTabSheet;
+    StrGridParcelas: TStringGrid;
+    CmbBoxJuros: TComboBox;
+    ChckBoxComparar: TCheckBox;
+    EdtTaxaJuros2: TEdit;
+    CmbBoxJuros2: TComboBox;
+
+    procedure BtnCalcularClick(Sender: TObject);
+    procedure TabSheetParcelasEnter(Sender: TObject);
+    function CalculaJurosSimples(ValorCapital: Currency; TaxaJuros: Double; Tempo: Integer): Currency;
+    function CalculaMontanteComposto(ValorCapital: Currency; TaxaJuros: Double; Tempo: Integer): Currency;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmPrincipal: TFrmPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmPrincipal.BtnCalcularClick(Sender: TObject);
+var
+  ValorCapital, MontanteSimples, MontanteComposto, JurosSimples, JurosComposto: Currency;
+  TaxaJuros: Double;
+  Tempo: Integer;
+begin
+  MemResultado.Clear;
+
+  ValorCapital := StrToCurr(EdtValorCapital.Text);
+  TaxaJuros := (StrToFloat(EdtTaxaJuros.Text)) / 100;
+  Tempo := StrToInt(SpnEdtTempo.Text);
+
+  JurosSimples := ValorCapital * TaxaJuros * Tempo; // J = C.i.t
+  MontanteSimples := ValorCapital + JurosSimples; // M = C + J
+  MontanteComposto := CalculaMontanteComposto(ValorCapital, TaxaJuros, Tempo);
+  JurosComposto := MontanteComposto - ValorCapital;
+
+  if CmbBoxJuros.Text = 'composto' then
+    MemResultado.Lines.Add('Montante: R$ ' + CurrToStrF(MontanteComposto, ffCurrency, 2))
+  else
+    MemResultado.Lines.Add('Montante: R$ ' + CurrToStrF(MontanteComposto, ffCurrency, 2));
+
+  TabSheetParcelasEnter(Sender);
+
+end;
+
+function TFrmPrincipal.CalculaJurosSimples(ValorCapital: Currency; TaxaJuros: Double; Tempo: Integer): Currency;
+begin
+  Result := ValorCapital * TaxaJuros * Tempo; // J = C.i.t
+end;
+
+function TFrmPrincipal.CalculaMontanteComposto(ValorCapital: Currency; TaxaJuros: Double; Tempo: Integer): Currency;
+begin
+  Result := ValorCapital * (Power((1 + TaxaJuros), Tempo)); // M = C (1 + i)^t
+end;
+
+procedure TFrmPrincipal.TabSheetParcelasEnter(Sender: TObject);
+const
+  Contato = 987654321;
+var
+  I: Integer;
+begin
+  //Prepara cabeçalho
+  //StrGridParcelas.ColCount := 3;
+  //StrGridParcelas.RowCount := 51;
+  //StrGridParcelas.ColWidths[0] := 60;
+  StrGridParcelas.Cells[0,0] := 'Parcela';
+  StrGridParcelas.ColWidths[1] := 100;
+  StrGridParcelas.Cells[1,0] := 'Juros Composto';
+  StrGridParcelas.ColWidths[2] := 100;
+  StrGridParcelas.Cells[2,0] := 'Juros Simples';
+
+  //Atribui informações
+  //ProgressBar1.Max := 20;
+  for I := 1 to 20 do
+  begin
+    StrGridParcelas.Cells[0,I] := IntToStr(I);
+    StrGridParcelas.Cells[1,I] := 'Cliente '+ IntToStr(I);
+    StrGridParcelas.Cells[2,I] := IntToStr(Contato + Random(100));
+    //.Position := ProgressBar1.Position +1;
+    Application.ProcessMessages;
+    //Sleep(100);
+  end;
+end;
+
+end.

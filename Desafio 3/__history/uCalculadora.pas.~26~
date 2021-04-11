@@ -1,0 +1,64 @@
+unit uCalculadora;
+
+interface
+
+type
+  TCalculadora = class
+  private
+    FValorCapital, FJurosSimples, FMontanteSimples, FMontanteComposto: Currency;
+    FTaxaJuros: Double;
+    FTempo: Integer;
+
+    procedure SetValorCapital(const Value: Currency);
+    procedure SetTaxaJuros(const Value: Double);
+    procedure SetTempo(const Value: Integer);
+    procedure CalculaParcelas(ValorCapital: Currency);
+
+  public
+    function CalculaJurosSimples(ValorCapital: Currency; TaxaJuros: Double;
+      Tempo: Integer): Currency;
+    function CalculaMontanteSimples(ValorCapital: Currency; TaxaJuros: Double;
+      Tempo: Integer): Currency;
+    function CalculaMontanteComposto(ValorCapital: Currency; TaxaJuros: Double;
+      Tempo: Integer): Currency;
+
+    property ValorCapital: Currency read FValorCapital write FValorCapital;
+    property TaxaJuros: Double read FTaxaJuros write FTaxaJuros;
+    property Tempo: Integer read FTempo write FTempo;
+
+  end;
+
+implementation
+
+{ TCalculadora }
+uses
+  Math;
+
+procedure TCalculadora.CalculaParcelas(ValorCapital: Currency);
+var
+  ParcelaSimples, ParcelaComposta, CapitalInicial: Currency;
+  I: Integer;
+begin
+
+end;
+
+function TCalculadora.CalculaJurosSimples(ValorCapital: Currency;
+  TaxaJuros: Double; Tempo: Integer): Currency;
+begin
+  Result := ValorCapital * TaxaJuros * Tempo; // J = C.i.t
+end;
+
+function TCalculadora.CalculaMontanteSimples(ValorCapital: Currency;
+  TaxaJuros: Double; Tempo: Integer): Currency;
+begin
+  Result := ValorCapital + CalculaJurosSimples(ValorCapital, TaxaJuros, Tempo);
+  // M = C + J
+end;
+
+function TCalculadora.CalculaMontanteComposto(ValorCapital: Currency;
+  TaxaJuros: Double; Tempo: Integer): Currency;
+begin
+  Result := ValorCapital * (Power((1 + TaxaJuros), Tempo)); // M = C (1 + i)^t
+end;
+
+end.
