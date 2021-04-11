@@ -1,0 +1,22 @@
+unit FuncRecord;
+
+interface
+
+type
+  RFunc = record
+    Nome: String;
+    Salario: Currency;
+    NumFilhos: Integer;
+    function ValorLiquido: Double;
+  end;
+
+implementation
+
+{ RVenda }
+
+function RVenda.ValorLiquido: Double;
+begin
+  Result := Valor - Desconto;
+end;
+
+end.

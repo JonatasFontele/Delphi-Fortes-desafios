@@ -1,0 +1,82 @@
+unit uPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, FuncRecord, Vcl.ToolWin,
+  Vcl.ComCtrls;
+
+type
+  TFrmPrincipal = class(TForm)
+    LblNome: TLabel;
+    LblSalário: TLabel;
+    LblNumeroFilhos: TLabel;
+    EdtNome: TEdit;
+    EdtSalario: TEdit;
+    EdtNumFilhos: TEdit;
+    BtnAdicionar: TButton;
+    MemoDisplay: TMemo;
+    procedure BtnAdicionarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmPrincipal: TFrmPrincipal;
+  LFuncionarios: array of RFuncionario; //Vetor de Records
+  MediaFilhos: Integer;
+  PercentualSalario: Double;
+  MediaSalario: Currency;
+  MaiorSalario: Currency;
+  MenorSalario: Currency;
+  I: Integer = 0;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmPrincipal.BtnAdicionarClick(Sender: TObject);
+//var
+  //I: Integer;
+begin
+  MemoDisplay.Clear;
+  LFuncionarios[I].Nome := EdtNome.Text;
+  LFuncionarios[I].Salario := StrToFloat(EdtSalario.Text);
+  LFuncionarios[I].NumeroFilhos := StrToInt(EdtNumFilhos.Text);
+
+  if I = 0 then
+  begin
+    MaiorSalario := LFuncionarios[0].Salario;
+    MenorSalario := LFuncionarios[0].Salario;
+  end;
+
+  //Click := Click + 1;
+  Inc(Click);
+
+  //Vou separar em procedimentos depois
+  for I := 0 to Length(LFuncionarios) -1 do
+  begin
+    MediaFilhos := Round((MediaFilhos + LFuncionarios[I].NumeroFilhos)/2);
+    MediaSalario := (MediaSalario + LFuncionarios[I].Salario)/2;
+    if LFuncionarios[I].Salario > MaiorSalario then
+    begin
+      MaiorSalario := LFuncionarios[I].Salario;
+    end;
+    if LFuncionarios[I].Salario < MenorSalario then
+    begin
+      MenorSalario := LFuncionarios[I].Salario;
+    end;
+  end;
+
+  MemoDisplay.Lines.Add('Média do número de filhos: '+ FloatToStr(MediaFilhos));
+  MemoDisplay.Lines.Add('Percentual de salários menores que 1000,00: '+ FloatToStr(PercentualSalario));
+  MemoDisplay.Lines.Add('Média de salário: '+ FloatToStr(MediaSalario));
+  MemoDisplay.Lines.Add('Maior salário: '+ FloatToStr(MaiorSalario));
+  MemoDisplay.Lines.Add('Menor salário: '+ FloatToStr(MenorSalario));
+end;
+
+
+end.

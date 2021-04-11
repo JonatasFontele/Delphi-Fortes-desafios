@@ -1,0 +1,17 @@
+unit FuncRecord;
+
+interface
+
+type
+  RFuncionario = record
+    Nome: String;
+    Salario: Currency;
+    NumeroFilhos: Integer;
+    function MediaFilhos: Integer;
+  end;
+
+implementation
+
+{ RFuncionario }
+
+end.

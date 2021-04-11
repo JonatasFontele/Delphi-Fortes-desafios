@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/02/08 04:01:36.000.834,=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio2\Unit1.pas</Transaction>
+    <Transaction>2021/02/08 04:01:49.000.100,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio2\Unit1.pas=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio2\uCliente.pas</Transaction>
+    <Transaction>2021/02/08 04:02:54.000.580,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio2\uPrincipal.dfm=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio2\uFrmPrincipal.dfm</Transaction>
+    <Transaction>2021/02/08 04:02:54.000.580,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio2\uPrincipal.pas=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio2\uFrmPrincipal.pas</Transaction>
+  </Transactions>
+</BorlandProject>

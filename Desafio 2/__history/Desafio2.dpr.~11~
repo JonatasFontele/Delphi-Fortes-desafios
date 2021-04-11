@@ -1,0 +1,15 @@
+program Desafio2;
+
+uses
+  Vcl.Forms,
+  uPrincipal in 'uPrincipal.pas' {TFrmPrincipal},
+  FuncRecord in 'FuncRecord.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFrmPrincipal, TFrmPrincipal);
+  Application.Run;
+end.
