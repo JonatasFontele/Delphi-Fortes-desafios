@@ -1,0 +1,102 @@
+unit uPrincipal;
+
+{
+  A padaria XYZ vende uma certa quantidade de pães franceses e uma quantidade de
+  broas a cada dia.
+  Cada pãozinho custa R$ 0,75 e a broa custa R$ 4,50.
+  Ao final do dia, o dono quer saber quanto arrecadou com a venda dos pães e broas
+  (juntos), e quanto deve guardar numa conta de poupança (10% do total arrecadado).
+  Você foi contratado a desenvolver uma aplicação que acumule as vendas do dia e ao
+  fechar o caixa calcule as quantidades de pães e de broas e os dados solicitados.
+}
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ComCtrls, Vcl.Menus,
+  StrUtils, Contnrs, Generics.Defaults, Generics.Collections, uProduto;
+
+type
+  TFrmPrincipal = class(TForm)
+    LblProduto: TLabel;
+    LblPreco: TLabel;
+    BtnAdicionar: TButton;
+    RichEdt: TRichEdit;
+    EdtProduto: TEdit;
+    EdtPreco: TEdit;
+    MainMenu1: TMainMenu;
+    Abrirtxt1: TMenuItem;
+    Abrir1: TMenuItem;
+    Salvar1: TMenuItem;
+    Editar1: TMenuItem;
+    Deletar1: TMenuItem;
+    Fechar1: TMenuItem;
+    procedure BtnAdicionarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure Fechar1Click(Sender: TObject);
+  private
+    { Private declarations }
+    vDict: TObjectDictionary<Integer, TProduto>;
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmPrincipal: TFrmPrincipal;
+  Produto: TProduto;
+  I: Integer = 1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFrmPrincipal.BtnAdicionarClick(Sender: TObject);
+begin
+  try
+    vDict.Add(I, TProduto.Create(EdtProduto.Text, StrToCurr(EdtPreco.Text)));
+
+    RichEdt.Lines.Add('Venda' + IntToStr(I) + ' - ' + DateTimeToStr(Now));
+    Inc(I);
+    RichEdt.Lines.Add('Nome: ' + Produto.Nome);
+    RichEdt.Lines.Add('Preço: ' + CurrToStrF(Produto.Preco, ffCurrency, 2));
+    RichEdt.Lines.Add('');
+
+  finally
+    //vDict.Free;
+  end;
+end;
+
+procedure TFrmPrincipal.Fechar1Click(Sender: TObject);
+var
+  Paezinhos, Broas: Integer;
+  ValorTotal: Currency;
+begin
+  Paezinhos := 0;
+  Broas := 0;
+  ValorTotal := 0;
+  for Produto in vDict.Values do
+  begin
+    ValorTotal := ValorTotal + Produto.Preco;
+    if Produto.Nome = 'Pãozinho' then
+      Inc(Paezinhos)
+    else if Produto.Nome = 'Broa' then
+      Inc(Broas);
+  end;
+  ShowMessage('Pãezinhos: ' + IntToStr(Paezinhos) + ', Broas: ' + IntToStr(Broas) +
+    '. Total arrecadado: ' + CurrToStrF(ValorTotal, ffCurrency, 2) +
+    '. Guardar na poupança: ' + CurrToStrF(ValorTotal * 0.1, ffCurrency, 2));
+end;
+
+procedure TFrmPrincipal.FormCreate(Sender: TObject);
+begin
+  vDict := TObjectDictionary<Integer, TProduto>.Create([doOwnsValues]);
+end;
+
+procedure TFrmPrincipal.FormDestroy(Sender: TObject);
+begin
+  vDict.Free;
+end;
+
+end.

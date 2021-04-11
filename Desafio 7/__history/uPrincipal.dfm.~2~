@@ -1,0 +1,60 @@
+object FrmPrincipal: TFrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 361
+  ClientWidth = 384
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Lbl1: TLabel
+    Left = 56
+    Top = 32
+    Width = 31
+    Height = 13
+    Caption = 'Label1'
+  end
+  object Lbl2: TLabel
+    Left = 56
+    Top = 64
+    Width = 31
+    Height = 13
+    Caption = 'Label2'
+  end
+  object Btn: TButton
+    Left = 232
+    Top = 99
+    Width = 75
+    Height = 25
+    Caption = 'Button1'
+    TabOrder = 0
+  end
+  object RichEdt: TRichEdit
+    AlignWithMargins = True
+    Left = 20
+    Top = 141
+    Width = 344
+    Height = 200
+    Margins.Left = 20
+    Margins.Top = 20
+    Margins.Right = 20
+    Margins.Bottom = 20
+    Align = alBottom
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    ScrollBars = ssVertical
+    TabOrder = 1
+    Zoom = 100
+  end
+end

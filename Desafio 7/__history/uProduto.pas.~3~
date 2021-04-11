@@ -1,0 +1,46 @@
+unit uProduto;
+
+interface
+
+type
+  TProduto = class
+  private
+    FCodigo: Integer;
+    FPreco: Currency;
+    FNome: string;
+    procedure SetCodigo(const Value: Integer);
+    procedure SetNome(const Value: string);
+    procedure SetPreco(const Value: Currency);
+  public
+    constructor Create(PNome: string; PPreco: Currency);
+    property Codigo: Integer read FCodigo write SetCodigo;
+    property Nome: string read FNome write SetNome;
+    property Preco: Currency read FPreco write SetPreco;
+  end;
+
+implementation
+
+{ TProduto }
+
+procedure TProduto.SetCodigo(const Value: Integer);
+begin
+  FCodigo := Value;
+end;
+
+procedure TProduto.SetNome(const Value: string);
+begin
+  FNome := Value;
+end;
+
+procedure TProduto.SetPreco(const Value: Currency);
+begin
+  FPreco := Value;
+end;
+
+constructor TProduto.Create(PNome: String; PPreco: Currency);
+begin
+  FNome := PNome;
+  FPreco := PPreco;
+end;
+
+end.
