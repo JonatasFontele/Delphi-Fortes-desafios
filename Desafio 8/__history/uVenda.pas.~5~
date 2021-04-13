@@ -1,0 +1,41 @@
+unit uVenda;
+
+interface
+
+type
+  TVenda = class
+  private
+    FCodigo: Integer;
+    FNome: String;
+    FQuantidade: Integer;
+    FValorTotalItem: Currency;
+
+    procedure SetValorTotalItem(const Value: Currency);
+
+  public
+    property Codigo: String read FCodigo write FCodigo;
+    property Nome: String read FNome write FNome;
+    property Quantidade: String read FQuantidade write FQuantidade;
+    property ValorTotalItem: String read FValorTotalItem write SetValorTotalItem;
+
+  end;
+
+implementation
+{ TVenda }
+
+procedure TVenda.SetCodigo(const Value: Integer);
+begin
+  FCodigo := Value;
+end;
+
+procedure TVenda.SetNome(const Value: String);
+begin
+  FNome := Value;
+end;
+
+procedure TVenda.SetQuantidade(const Value: Integer);
+begin
+  FQuantidade := Value;
+end;
+
+end.

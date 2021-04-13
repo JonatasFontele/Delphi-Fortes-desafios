@@ -1,0 +1,34 @@
+unit uVenda;
+
+interface
+
+uses
+  System.SysUtils;
+
+type
+  TVenda = class
+  private
+    FCodigo: Integer;
+    FNome: String;
+    FQuantidade: Integer;
+    FValorTotalItem: Currency;
+
+    procedure SetValorTotalItem(const Value: Currency);
+
+  public
+    property Codigo: Integer read FCodigo write FCodigo;
+    property Nome: String read FNome write FNome;
+    property Quantidade: Integer read FQuantidade write FQuantidade;
+    property ValorTotalItem: Currency read FValorTotalItem write SetValorTotalItem;
+
+  end;
+
+implementation
+{ TVenda }
+
+procedure TVenda.SetValorTotalItem(const Value: Currency);
+begin
+  FValorTotalItem := CurrToStrF(Value * Quantidade, ffCurrency, 2);
+end;
+
+end.

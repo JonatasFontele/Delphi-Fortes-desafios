@@ -1,0 +1,41 @@
+unit uVenda;
+
+interface
+
+type
+  TVenda = class
+  private
+    FCodigo: String;
+    FNome: String;
+    FValor: String;
+
+    procedure SetCodigo(const Value: String);
+    procedure SetNome(const Value: String);
+    procedure SetValor(const Value: String);
+
+  public
+    property Codigo: String read FCodigo write SetCodigo;
+    property Nome: String read FNome write SetNome;
+    property Valor: String read FValor write SetValor;
+
+  end;
+
+implementation
+{ TVenda }
+
+procedure TVenda.SetCodigo(const Value: String);
+begin
+  FCodigo := Value;
+end;
+
+procedure TVenda.SetNome(const Value: String);
+begin
+  FNome := Value;
+end;
+
+procedure TVenda.SetValor(const Value: String);
+begin
+  FValor := Value;
+end;
+
+end.

@@ -1,0 +1,60 @@
+unit uProduto;
+
+interface
+
+uses
+  System.SysUtils;
+
+type
+  TProduto = class
+  private
+    FCodigo: Integer;
+    FNome: string;
+    FQuantidade: Integer;
+    FPreco: Currency;
+    FValorTotalItem: Currency;
+    FValorFinal: Currency;
+
+    procedure SetValorTotalItem(const Value: Currency);
+    procedure SetValorFinal(const Value: Currency);
+
+  public
+    constructor Create(PNome: string; PPreco: Currency); Overload;
+    constructor Create; Overload;
+
+    property Codigo: Integer read FCodigo write FCodigo;
+    property Nome: string read FNome write FNome;
+    property Quantidade: Integer read FQuantidade write FQuantidade;
+    property Preco: Currency read FPreco write FPreco;
+
+    // Preco * Quantidade
+    property ValorTotalItem: Currency read FValorTotalItem write SetValorTotalItem;
+    // Valor do total vendido por cada produto
+    property ValorFinal: Currency read FValorFinal write SetValorFinal;
+  end;
+
+implementation
+{ TVenda }
+
+procedure TProduto.SetValorTotalItem(const Value: Currency);
+begin
+  FValorTotalItem := Value * Quantidade;
+end;
+
+procedure TProduto.SetValorFinal(const Value: Currency);
+begin
+  FValorFinal := FValorFinal + Value;
+end;
+
+constructor TProduto.Create(PNome: string; PPreco: Currency);
+begin
+  FNome := PNome;
+  FPreco := PPreco;
+end;
+
+constructor TProduto.Create;
+begin
+  // Cria objeto sem parâmetros
+end;
+
+end.
