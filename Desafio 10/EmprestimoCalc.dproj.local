@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/02/23 17:21:45.000.081,=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/03/02 17:23:18.225,=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/03/02 17:23:32.612,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\Unit1.pas=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/03/02 17:23:32.612,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\Unit1.dfm=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2021/03/02 17:23:35.000,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\Project1.dproj=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2021/03/02 17:23:52.928,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\EmprestimoCalc.dproj=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\Project1.dproj</Transaction>
+    <Transaction>2021/03/02 17:25:10.834,=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\Principal.pas</Transaction>
+    <Transaction>2021/03/02 17:25:33.930,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\Unit1.pas=</Transaction>
+    <Transaction>2021/03/02 17:26:01.173,=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\Clientes.pas</Transaction>
+    <Transaction>2021/03/02 18:00:25.676,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\uCliente.pas=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\Clientes.pas</Transaction>
+    <Transaction>2021/03/02 18:00:25.676,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\uCliente.dfm=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\Clientes.dfm</Transaction>
+    <Transaction>2021/03/02 18:00:40.256,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\uFormPrincipal.pas=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\Principal.pas</Transaction>
+    <Transaction>2021/03/02 18:00:40.256,C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\uFormPrincipal.dfm=C:\Users\jonat\OneDrive\Documentos\Embarcadero\Studio\Projects\Desafio10\Principal.dfm</Transaction>
+  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="uFormPrincipal.pas"/>
+    <File Path="uFormPrincipal.dfm"/>
+    <File Path="uCliente.pas"/>
+    <File Path="uCliente.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>

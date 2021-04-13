@@ -1,0 +1,130 @@
+unit uFormPrincipal;
+
+{
+  Desenvolver uma aplicação para disponibilizar as modalidades de empréstimo
+  as quais o cliente tem acesso de acordo com algumas variáveis.
+  Modalidades ativas no banco:
+  1 - Empréstimo pessoal - Taxa de juros: 4%
+  2 - Empréstimo com garantia - Taxa de juros: 3%
+  3 - Consignado - Taxa de juros: 2%
+
+  Regra                      Emp. pessoal     Emp. c/ Garantia       Consignado
+  Salário <= 3000                Sim              Sim***                 Não
+  Salário > 3000 e <= 5000       Sim              Sim**                  Não
+  Salário => 5000                Sim              Sim*                   Sim
+
+  *** Clientes com menos de 30 anos que residem no CE
+  ** Clientes que residem no CE
+  * Clientes com menos de 30 anos
+
+  Exemplo de entrada:
+  Nome: Maria
+  Idade: 29
+  Estado: CE
+  Salario: 3000
+
+  Exemplo de saída:
+  Modalidade (s): 1,2
+}
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
+  System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
+  Vcl.StdCtrls, Vcl.Grids;
+
+type
+  TFrmPrincipal = class(TForm)
+    GrdClientes: TStringGrid;
+    BtnCadastrar: TButton;
+    BtnRemover: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure BtnCadastrarClick(Sender: TObject);
+    procedure BtnRemoverClick(Sender: TObject);
+  private
+    { Private declarations }
+    procedure Cadastrar(const Nome, Contato, Renda: string);
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmPrincipal: TFrmPrincipal;
+
+implementation
+
+uses
+  uCliente;
+
+{$R *.dfm}
+
+procedure TFrmPrincipal.BtnCadastrarClick(Sender: TObject);
+begin
+  FrmCliente := nil;
+  try
+    FrmCliente := TFrmCliente.Create(Self);
+    FrmCliente.ShowModal;
+    if FrmCliente.EdtNome.Text <> '' then
+      Cadastrar(FrmCliente.EdtNome.Text, StrToInt(FrmCliente.SpnEdtIdade.Text),
+        FrmCliente.CmbBoxEstados.Text, StrToCurr(FrmCliente.EdtSalario.Text));
+  finally
+    FrmCliente.Free;
+  end;
+end;
+
+procedure TFrmPrincipal.Cadastrar(const Nome, Estado: string; Idade: Integer;
+  Salario: Currency);
+var
+  NovaLinha: Integer;
+begin
+  NovaLinha := GrdClientes.RowCount +1;
+  GrdClientes.RowCount := NovaLinha;
+  GrdClientes.Cells[0,NovaLinha -1] := Nome;
+  GrdClientes.Cells[1,NovaLinha -1] := Idade;
+  GrdClientes.Cells[2,NovaLinha -1] := Estado;
+  GrdClientes.Cells[3,NovaLinha -1] := Salario;
+  GrdClientes.Cells[4,NovaLinha -1] := Modalidade;
+end;
+
+procedure TFrmPrincipal.BtnRemoverClick(Sender: TObject);
+var
+  I, Linha: Integer;
+begin
+  if GrdClientes.Row > 0 then
+  begin
+     Linha := GrdClientes.Row;
+     for I := Linha to GrdClientes.RowCount -1 do
+     begin
+       GrdClientes.Cells[0,I] := GrdClientes.Cells[0,I+1];
+       GrdClientes.Cells[1,I] := GrdClientes.Cells[1,I+1];
+       GrdClientes.Cells[2,I] := GrdClientes.Cells[2,I+1];
+     end;
+     GrdClientes.RowCount := GrdClientes.RowCount -1;
+  end;
+end;
+
+procedure TFrmPrincipal.FormCreate(Sender: TObject);
+begin
+  GrdClientes.ColCount := 5;
+  GrdClientes.RowCount := 4;
+  GrdClientes.Cells[0,0] := 'Nome';
+  GrdClientes.Cells[1,0] := 'Idade';
+  GrdClientes.Cells[2,0] := 'Estado';
+  GrdClientes.Cells[3,0] := 'Salário';
+  GrdClientes.Cells[4,0] := 'Modalidade';
+
+  GrdClientes.Cells[0,1] := 'Teste 1';
+  GrdClientes.Cells[1,1] := '4353454353';
+  GrdClientes.Cells[2,1] := '1000';
+
+  GrdClientes.Cells[0,2] := 'Teste 2';
+  GrdClientes.Cells[1,2] := '9879879872';
+  GrdClientes.Cells[2,2] := '1500';
+
+  GrdClientes.Cells[0,3] := 'Teste 3';
+  GrdClientes.Cells[1,3] := '4546598221';
+  GrdClientes.Cells[2,3] := '1250';
+end;
+
+end.
